@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:tinder_clone/Models/tinder_clone_icons.dart';
 import 'package:tinder_clone/Screens/PhoneNumber.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -33,12 +34,12 @@ class _LoginScreenState extends State<LoginScreen> {
                       child: new Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
-                      new Image(
-                          width: ScreenUtil().setWidth(150.0),
-                          height: ScreenUtil().setHeight(150.0),
-                          image: new AssetImage(
-                              'assets/images/tinder_logo_white.png')),
-                      new SizedBox(width: ScreenUtil().setWidth(30.0)),
+                      new Icon(
+                        Tinder_clone.iconfinder_338_tinder_logo_4375488__1_,
+                        color: Colors.white,
+                        size: ScreenUtil().setSp(180.0),
+                      ),
+                      new SizedBox(width: ScreenUtil().setWidth(10.0)),
                       new Text(
                         "tinder",
                         style: new TextStyle(
