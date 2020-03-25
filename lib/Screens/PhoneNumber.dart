@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:tinder_clone/HomePage.dart';
 
 class PhoneNumberScreen extends StatelessWidget {
   @override
@@ -82,7 +83,9 @@ class PhoneNumberScreen extends StatelessWidget {
                     ),
                     new GestureDetector(
                       onTap: () {
-
+                        Navigator.pop(context);
+                        Navigator.pop(context);
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => HomePage()));
                       },
                       child: new Container(
                         decoration: new BoxDecoration(
