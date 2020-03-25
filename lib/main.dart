@@ -15,7 +15,6 @@ class MyApp extends StatelessWidget {
         secondaryHeaderColor: Color.fromRGBO(255, 88, 100, 1.0),
         accentColor: Color.fromRGBO(255, 101, 91, 1.0)
       ),
-
       home : SplashScreen(),
     );
   }
