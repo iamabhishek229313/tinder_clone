@@ -29,7 +29,7 @@ class _HomePageState extends State<HomePage>
         appBar: new AppBar(
           backgroundColor: Colors.white,
           automaticallyImplyLeading: false,
-          elevation: 5,
+          elevation: 1,
           title: new TabBar(
               indicatorColor: Colors.transparent,
               controller: _tabcontroller,
