@@ -79,6 +79,7 @@ class _HomePageState extends State<HomePage>
               ]),
         ),
         body: new TabBarView(
+          physics: NeverScrollableScrollPhysics(),
           controller: _tabcontroller,
           children: <Widget>[
             new ProfileTab(),

@@ -1,22 +1,22 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:flutter_tindercard/flutter_tindercard.dart';
+import 'package:tinder_clone/Models/PeopleList.dart';
 import 'package:tinder_clone/Widgets/MatchCard.dart';
 
 class TinderTab extends StatefulWidget {
   @override
   _TinderTabState createState() => _TinderTabState();
 }
+class _TinderTabState extends State<TinderTab> with SingleTickerProviderStateMixin {
 
-class _TinderTabState extends State<TinderTab> {
+  CardController _cardController ;
   @override
   Widget build(BuildContext context) {
     return Stack(
       children: <Widget>[
         new Container(
-          color: Colors.blue.shade50,
+          color: Colors.blueAccent.shade50,
         ),
         new Positioned(
           bottom: 0.0,
@@ -210,13 +210,39 @@ class _TinderTabState extends State<TinderTab> {
             ),
           ),
         ),
-        // new Align(
-        //   alignment: Alignment.topCenter,
-        //   child: new Padding(
-        //       padding: EdgeInsets.only(top: ScreenUtil().setWidth(15.0)),
-        //       child: new Draggable(child: MatchCard(), feedback: MatchCard()))
-        // ),
-        MatchCard()
+        new Align(
+          alignment: Alignment.topCenter,
+          child: new TinderSwapCard(
+              animDuration: 800,
+              orientation: AmassOrientation.TOP,
+              totalNum: peoples.length,
+              stackNum: 3,
+              swipeEdge:10.0,
+              maxWidth:  MediaQuery.of(context).size.width - 10.0,
+              maxHeight:MediaQuery.of(context).size.height * 0.74,
+              minWidth: MediaQuery.of(context).size.width - 50.0,
+              minHeight: MediaQuery.of(context).size.height * 0.73,
+              cardBuilder: (context, index) {
+                return peoples[index];
+              },
+              cardController: _cardController,
+              swipeUpdateCallback:
+                  (DragUpdateDetails details, Alignment align) {
+                /// Get swiping card's alignment
+                if (align.x < 0) {
+                  //Card is LEFT swiping
+                  print(align.x);
+                } else if (align.x > 0) {
+                  //Card is RIGHT swiping
+                  print(align.y);
+                }
+              },
+              swipeCompleteCallback:
+                  (CardSwipeOrientation orientation, int index) {
+                /// Get orientation & index of swiped card!
+              },
+          )
+        ),
       ],
     );
   }
