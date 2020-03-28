@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_tindercard/flutter_tindercard.dart';
@@ -8,15 +10,20 @@ class TinderTab extends StatefulWidget {
   @override
   _TinderTabState createState() => _TinderTabState();
 }
-class _TinderTabState extends State<TinderTab> with SingleTickerProviderStateMixin {
 
-  CardController _cardController ;
+class _TinderTabState extends State<TinderTab>
+    with SingleTickerProviderStateMixin {
+  bool chng = true;
+  bool atCenter = true ;
+  CardController _cardController;
   @override
   Widget build(BuildContext context) {
     return Stack(
       children: <Widget>[
-        new Container(
-          color: Colors.blueAccent.shade50,
+        new AnimatedContainer(
+          duration: new Duration(milliseconds: 600),
+          curve: Curves.fastLinearToSlowEaseIn,
+          color: !atCenter ? chng ? Colors.pinkAccent.shade200 : Colors.tealAccent.shade200 : Colors.blue.shade50,
         ),
         new Positioned(
           bottom: 0.0,
@@ -102,16 +109,14 @@ class _TinderTabState extends State<TinderTab> with SingleTickerProviderStateMix
                       boxShadow: [
                         new BoxShadow(
                             offset: new Offset(0.0, 0.0), color: Colors.grey),
-                            new BoxShadow(
-                          offset: new Offset(1.0, 1.0),
-                          color: Colors.grey,
-                          blurRadius: 5.0
-                        ),
                         new BoxShadow(
-                          offset: new Offset(-1.0, -1.0),
-                          color: Colors.white,
-                          blurRadius: 10.0
-                        )
+                            offset: new Offset(1.0, 1.0),
+                            color: Colors.grey,
+                            blurRadius: 5.0),
+                        new BoxShadow(
+                            offset: new Offset(-1.0, -1.0),
+                            color: Colors.white,
+                            blurRadius: 10.0)
                       ],
                       color: Colors.white,
                       borderRadius: BorderRadius.circular(60.0)),
@@ -140,16 +145,14 @@ class _TinderTabState extends State<TinderTab> with SingleTickerProviderStateMix
                       boxShadow: [
                         new BoxShadow(
                             offset: new Offset(0.0, 0.0), color: Colors.grey),
-                            new BoxShadow(
-                          offset: new Offset(1.0, 1.0),
-                          color: Colors.grey,
-                          blurRadius: 5.0
-                        ),
                         new BoxShadow(
-                          offset: new Offset(-1.0, -1.0),
-                          color: Colors.white,
-                          blurRadius: 10.0
-                        )
+                            offset: new Offset(1.0, 1.0),
+                            color: Colors.grey,
+                            blurRadius: 5.0),
+                        new BoxShadow(
+                            offset: new Offset(-1.0, -1.0),
+                            color: Colors.white,
+                            blurRadius: 10.0)
                       ],
                       color: Colors.white,
                       borderRadius: BorderRadius.circular(60.0)),
@@ -178,16 +181,14 @@ class _TinderTabState extends State<TinderTab> with SingleTickerProviderStateMix
                       boxShadow: [
                         new BoxShadow(
                             offset: new Offset(0.0, 0.0), color: Colors.grey),
-                            new BoxShadow(
-                          offset: new Offset(1.0, 1.0),
-                          color: Colors.grey,
-                          blurRadius: 5.0
-                        ),
                         new BoxShadow(
-                          offset: new Offset(-1.0, -1.0),
-                          color: Colors.white,
-                          blurRadius: 10.0
-                        )
+                            offset: new Offset(1.0, 1.0),
+                            color: Colors.grey,
+                            blurRadius: 5.0),
+                        new BoxShadow(
+                            offset: new Offset(-1.0, -1.0),
+                            color: Colors.white,
+                            blurRadius: 10.0)
                       ],
                       color: Colors.white,
                       borderRadius: BorderRadius.circular(60.0)),
@@ -211,15 +212,15 @@ class _TinderTabState extends State<TinderTab> with SingleTickerProviderStateMix
           ),
         ),
         new Align(
-          alignment: Alignment.topCenter,
-          child: new TinderSwapCard(
+            alignment: Alignment.topCenter,
+            child: new TinderSwapCard(
               animDuration: 800,
               orientation: AmassOrientation.TOP,
               totalNum: peoples.length,
               stackNum: 3,
-              swipeEdge:10.0,
-              maxWidth:  MediaQuery.of(context).size.width - 10.0,
-              maxHeight:MediaQuery.of(context).size.height * 0.74,
+              swipeEdge: 10.0,
+              maxWidth: MediaQuery.of(context).size.width - 10.0,
+              maxHeight: MediaQuery.of(context).size.height * 0.74,
               minWidth: MediaQuery.of(context).size.width - 50.0,
               minHeight: MediaQuery.of(context).size.height * 0.73,
               cardBuilder: (context, index) {
@@ -231,19 +232,37 @@ class _TinderTabState extends State<TinderTab> with SingleTickerProviderStateMix
                 /// Get swiping card's alignment
                 if (align.x < 0) {
                   //Card is LEFT swiping
-                  print(align.x);
+                  print("Left align " + align.x.toString());
+                  setState(() {
+                    if(align.x < -1)
+                    atCenter = false ;
+                    chng = true ;
+                  });
                 } else if (align.x > 0) {
                   //Card is RIGHT swiping
-                  print(align.y);
+                  print("right align " + align.x.toString());
+                  setState(() {
+                    if(align.x > 1)
+                    atCenter = false ;
+                    chng = false ;
+                  });
                 }
               },
               swipeCompleteCallback:
                   (CardSwipeOrientation orientation, int index) {
                 /// Get orientation & index of swiped card!
+                setState(() {
+                  atCenter = true;
+                });
+                print(orientation);
               },
-          )
-        ),
+            )),
       ],
     );
+  }
+
+  double abs(double x) {
+    if (x < 0) return x * -1;
+    return x;
   }
 }
