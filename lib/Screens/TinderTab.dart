@@ -14,7 +14,9 @@ class TinderTab extends StatefulWidget {
 class _TinderTabState extends State<TinderTab>
     with SingleTickerProviderStateMixin {
   bool chng = true;
-  bool atCenter = true ;
+  bool atCenter = true;
+  bool _triggerNotFound = false;
+  bool _timeout = false;
   CardController _cardController;
   @override
   Widget build(BuildContext context) {
@@ -23,7 +25,61 @@ class _TinderTabState extends State<TinderTab>
         new AnimatedContainer(
           duration: new Duration(milliseconds: 600),
           curve: Curves.fastLinearToSlowEaseIn,
-          color: !atCenter ? chng ? Colors.pinkAccent.shade200 : Colors.tealAccent.shade200 : Colors.blue.shade50,
+          color: !atCenter
+              ? chng ? Colors.pinkAccent.shade200 : Colors.tealAccent.shade200
+              : Colors.blue.shade50,
+          child: new Center(
+            child: _triggerNotFound
+                ? !_timeout
+                    ? Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          new CircularProgressIndicator(),
+                          new SizedBox(
+                            height: ScreenUtil().setHeight(30.0),
+                          ),
+                          new Text(
+                            "Searching nearby matchings ...",
+                            style: new TextStyle(
+                                fontSize: ScreenUtil().setSp(60.0),
+                                fontWeight: FontWeight.w200,
+                                color: Colors.grey.shade600),
+                          )
+                        ],
+                      )
+                    : Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: <Widget>[
+                          new SizedBox(
+                            height: ScreenUtil().setHeight(550.0),
+                          ),
+                          new ClipRRect(
+                            borderRadius: BorderRadius.circular(100.0),
+                            child: new Image(
+                                width: ScreenUtil().setWidth(400),
+                                height: ScreenUtil().setWidth(400),
+                                fit: BoxFit.cover,
+                                image:
+                                    new AssetImage('assets/images/abhishekProfile.JPG')),
+                          ),
+                          new SizedBox(
+                            height: ScreenUtil().setHeight(40.0),
+                          ),
+                          new Padding(
+                            padding: EdgeInsets.symmetric(
+                                horizontal: ScreenUtil().setWidth(60.0)),
+                            child: new Text("There is no one new around you ...",
+                                textAlign: TextAlign.center,
+                                style: new TextStyle(
+                                    wordSpacing: 1.2,
+                                    fontSize: ScreenUtil().setSp(55.0),
+                                    fontWeight: FontWeight.w300,
+                                    color: Colors.grey.shade600)),
+                          )
+                        ],
+                      )
+                : Container(),
+          ),
         ),
         new Positioned(
           bottom: 0.0,
@@ -234,17 +290,15 @@ class _TinderTabState extends State<TinderTab>
                   //Card is LEFT swiping
                   print("Left align " + align.x.toString());
                   setState(() {
-                    if(align.x < -1)
-                    atCenter = false ;
-                    chng = true ;
+                    if (align.x < -1) atCenter = false;
+                    chng = true;
                   });
                 } else if (align.x > 0) {
                   //Card is RIGHT swiping
                   print("right align " + align.x.toString());
                   setState(() {
-                    if(align.x > 1)
-                    atCenter = false ;
-                    chng = false ;
+                    if (align.x > 1) atCenter = false;
+                    chng = false;
                   });
                 }
               },
@@ -253,8 +307,14 @@ class _TinderTabState extends State<TinderTab>
                 /// Get orientation & index of swiped card!
                 setState(() {
                   atCenter = true;
+                  if (index == peoples.length - 1) {
+                    _triggerNotFound = true;
+                    Future.delayed(Duration(seconds: 5), () {
+                      _timeout = true;
+                      setState(() {});
+                    });
+                  }
                 });
-                print(orientation);
               },
             )),
       ],
