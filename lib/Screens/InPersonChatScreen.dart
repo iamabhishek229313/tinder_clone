@@ -23,7 +23,7 @@ class _InChatScreenState extends State<InChatScreen> {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
-        backgroundColor: Theme.of(context).accentColor,
+        backgroundColor: Colors.white,
         appBar: new AppBar(
           automaticallyImplyLeading: false,
           backgroundColor: Colors.white,
@@ -119,47 +119,22 @@ class _InChatScreenState extends State<InChatScreen> {
                               nip: (index < msgs.length - 2 &&
                                       msgs[index + 1].isMe)
                                   ? BubbleNip.no
-                                  : BubbleNip.rightTop,
-                              color: Color.fromRGBO(225, 255, 199, 1.0),
-                              nipHeight: ScreenUtil().setHeight(12.0),
+                                  : BubbleNip.rightBottom,
+                              nipRadius: ScreenUtil().setWidth(11),
+                              color: Colors.blue.shade300,
+                              style: new BubbleStyle(
+                                  radius: Radius.circular(
+                                      ScreenUtil().setWidth(40.0))),
+                              nipHeight: ScreenUtil().setHeight(20),
+                              nipWidth: ScreenUtil().setWidth(23),
                               alignment: Alignment.centerRight,
                               elevation: 0.4,
-                              child: new Column(
-                                mainAxisSize: MainAxisSize.min,
-                                crossAxisAlignment: CrossAxisAlignment.end,
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                children: <Widget>[
-                                  new Text(
-                                    msgs[index].msg,
-                                  ),
-                                  new SizedBox(
-                                    height: ScreenUtil().setHeight(10.0),
-                                  ),
-                                  new Row(
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    mainAxisSize: MainAxisSize.min,
-                                    children: <Widget>[
-                                      new Text(
-                                        msgs[index].time,
-                                        style: new TextStyle(
-                                            fontSize: ScreenUtil().setSp(20.0),
-                                            color: Colors.grey),
-                                      ),
-                                      new SizedBox(
-                                        width: ScreenUtil().setWidth(10.0),
-                                      ),
-                                      new Icon(
-                                        msgs[index].sent
-                                            ? Icons.check
-                                            : Icons.check_box_outline_blank,
-                                        color: msgs[index].seen
-                                            ? Colors.blue
-                                            : Colors.grey,
-                                        size: ScreenUtil().setSp(27.0),
-                                      )
-                                    ],
-                                  ),
-                                ],
+                              child: new Text(
+                                msgs[index].msg,
+                                style: new TextStyle(
+                                    color: Colors.white,
+                                    fontSize: ScreenUtil().setSp(43),
+                                    fontWeight: FontWeight.w400),
                               ),
                             )
                           : new Bubble(
@@ -169,37 +144,25 @@ class _InChatScreenState extends State<InChatScreen> {
                                       ? ScreenUtil().setHeight(20.0)
                                       : ScreenUtil().setHeight(5.0),
                                   right: ScreenUtil().setWidth(100.0)),
-                              nip: (index < msgs.length - 1 &&
-                                      msgs[index + 1].isMe)
-                                  ? BubbleNip.leftTop
-                                  : BubbleNip.no,
-                              nipHeight: ScreenUtil().setHeight(12.0),
+                              nip: (index < msgs.length - 2 &&
+                                      !msgs[index + 1].isMe)
+                                  ? BubbleNip.no
+                                  : BubbleNip.leftBottom,
+                              color: Colors.blueGrey.shade50,
+                              nipHeight: ScreenUtil().setHeight(20),
+                              nipWidth: ScreenUtil().setWidth(23),
+                              nipRadius: ScreenUtil().setWidth(11),
+                              style: new BubbleStyle(
+                                  radius: Radius.circular(
+                                      ScreenUtil().setWidth(40.0))),
                               alignment: Alignment.centerLeft,
                               elevation: 0.4,
-                              child: new Column(
-                                mainAxisSize: MainAxisSize.min,
-                                crossAxisAlignment: CrossAxisAlignment.end,
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                children: <Widget>[
-                                  new Text(
-                                    msgs[index].msg,
-                                  ),
-                                  new SizedBox(
-                                    height: ScreenUtil().setHeight(10.0),
-                                  ),
-                                  new Row(
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    mainAxisSize: MainAxisSize.min,
-                                    children: <Widget>[
-                                      new Text(
-                                        msgs[index].time,
-                                        style: new TextStyle(
-                                            fontSize: ScreenUtil().setSp(20.0),
-                                            color: Colors.grey),
-                                      ),
-                                    ],
-                                  ),
-                                ],
+                              child: new Text(
+                                msgs[index].msg,
+                                style: new TextStyle(
+                                    color: Colors.black87,
+                                    fontSize: ScreenUtil().setSp(43),
+                                    fontWeight: FontWeight.w400),
                               ),
                             );
                     },
@@ -207,7 +170,7 @@ class _InChatScreenState extends State<InChatScreen> {
                 )),
             new Container(
               padding: EdgeInsets.only(bottom: ScreenUtil().setHeight(5.0)),
-              height: ScreenUtil().setHeight(75.0),
+              height: ScreenUtil().setHeight(100.0),
               decoration: new BoxDecoration(
                   color: Colors.transparent,
                   borderRadius: new BorderRadius.circular(30.0)),
@@ -218,11 +181,18 @@ class _InChatScreenState extends State<InChatScreen> {
                 child: Row(
                   children: <Widget>[
                     new Expanded(
-                      flex: 15,
+                      flex: 8,
                       child: new Container(
                         height: double.infinity,
                         decoration: new BoxDecoration(
-                            color: Colors.white,
+                        color: Colors.white,
+
+                            boxShadow: [
+                              new BoxShadow(
+                                offset: new Offset(0.0, 0.0),
+                                color: Colors.grey
+                              )
+                            ],
                             borderRadius: new BorderRadius.circular(50.0)),
                         child: new Align(
                           alignment: Alignment.center,
@@ -253,7 +223,7 @@ class _InChatScreenState extends State<InChatScreen> {
                                 ),
                                 prefixIcon: new Icon(
                                   Icons.sentiment_satisfied,
-                                  size: ScreenUtil().setSp(45.0),
+                                  size: ScreenUtil().setSp(70.0),
                                   color: Colors.grey,
                                 )),
                           ),
@@ -264,16 +234,16 @@ class _InChatScreenState extends State<InChatScreen> {
                       width: ScreenUtil().setWidth(10.0),
                     ),
                     new Expanded(
-                        flex: 2,
+                        flex: 1,
                         child: new Container(
                             height: double.infinity,
                             decoration: new BoxDecoration(
-                                color: Theme.of(context).primaryColor,
+                                color: Colors.blue.shade300,
                                 borderRadius: new BorderRadius.circular(50.0)),
                             child: Center(
                               child: new Icon(
                                 Icons.send,
-                                size: ScreenUtil().setSp(40.0),
+                                size: ScreenUtil().setSp(70.0),
                                 color: Colors.white,
                               ),
                             )))
