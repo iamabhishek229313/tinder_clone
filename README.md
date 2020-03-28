@@ -31,7 +31,7 @@ Building this app with intention of learning flutter better .
 ![](https://github.com/iamabhishek229313/tinder_clone/blob/master/screenshots/tinder_clone_main.png)
 
 
-## 📚 Techaical Details
+## 📚 Technical Details
 ```
 Built entirely on Dart without use of native language . 
 Flutter SDK 
