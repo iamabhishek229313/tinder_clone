@@ -31,12 +31,12 @@ Building this app with intention of learning flutter better .
 ![](https://github.com/iamabhishek229313/tinder_clone/blob/master/screenshots/tinder_clone_main.png)
 
 
-## 📚 Techanical Details
+## 📚 Techaical Details
 ```
 Built entirely on Dart without use of native language . 
 Flutter SDK 
 ```
-## Future Releases
+## ⚛ Future Releases
 ```
 End to End encryption .
 Use of Download and Delete approcah at Database .
