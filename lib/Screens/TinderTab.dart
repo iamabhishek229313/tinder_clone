@@ -11,8 +11,7 @@ class TinderTab extends StatefulWidget {
   _TinderTabState createState() => _TinderTabState();
 }
 
-class _TinderTabState extends State<TinderTab>
-    with SingleTickerProviderStateMixin {
+class _TinderTabState extends State<TinderTab> with SingleTickerProviderStateMixin {
   bool chng = true;
   bool atCenter = true;
   bool _triggerNotFound = false;
@@ -26,7 +25,9 @@ class _TinderTabState extends State<TinderTab>
           duration: new Duration(milliseconds: 600),
           curve: Curves.fastLinearToSlowEaseIn,
           color: !atCenter
-              ? chng ? Colors.pinkAccent.shade200 : Colors.tealAccent.shade200
+              ? chng
+                  ? Colors.pinkAccent.shade200
+                  : Colors.tealAccent.shade200
               : Colors.blue.shade50,
           child: new Center(
             child: _triggerNotFound
@@ -40,10 +41,7 @@ class _TinderTabState extends State<TinderTab>
                           ),
                           new Text(
                             "Searching nearby matchings ...",
-                            style: new TextStyle(
-                                fontSize: ScreenUtil().setSp(60.0),
-                                fontWeight: FontWeight.w200,
-                                color: Colors.grey.shade600),
+                            style: new TextStyle(fontSize: ScreenUtil().setSp(60.0), fontWeight: FontWeight.w200, color: Colors.grey.shade600),
                           )
                         ],
                       )
@@ -55,26 +53,14 @@ class _TinderTabState extends State<TinderTab>
                           ),
                           new ClipRRect(
                             borderRadius: BorderRadius.circular(100.0),
-                            child: new Image(
-                                width: ScreenUtil().setWidth(400),
-                                height: ScreenUtil().setWidth(400),
-                                fit: BoxFit.cover,
-                                image:
-                                    new AssetImage('assets/images/abhishekProfile.JPG')),
+                            child: new Image(width: ScreenUtil().setWidth(400), height: ScreenUtil().setWidth(400), fit: BoxFit.cover, image: new AssetImage('assets/images/profile_img.jpg')),
                           ),
                           new SizedBox(
                             height: ScreenUtil().setHeight(40.0),
                           ),
                           new Padding(
-                            padding: EdgeInsets.symmetric(
-                                horizontal: ScreenUtil().setWidth(60.0)),
-                            child: new Text("There is no one new around you ...",
-                                textAlign: TextAlign.center,
-                                style: new TextStyle(
-                                    wordSpacing: 1.2,
-                                    fontSize: ScreenUtil().setSp(55.0),
-                                    fontWeight: FontWeight.w300,
-                                    color: Colors.grey.shade600)),
+                            padding: EdgeInsets.symmetric(horizontal: ScreenUtil().setWidth(60.0)),
+                            child: new Text("There is no one new around you ...", textAlign: TextAlign.center, style: new TextStyle(wordSpacing: 1.2, fontSize: ScreenUtil().setSp(55.0), fontWeight: FontWeight.w300, color: Colors.grey.shade600)),
                           )
                         ],
                       )
@@ -93,24 +79,13 @@ class _TinderTabState extends State<TinderTab>
                   padding: EdgeInsets.all(ScreenUtil().setWidth(15.0)),
                   height: ScreenUtil().setHeight(80.0),
                   width: ScreenUtil().setHeight(80.0),
-                  decoration: new BoxDecoration(
-                      boxShadow: [
-                        new BoxShadow(
-                            offset: new Offset(0.0, 0.0), color: Colors.grey),
-                        new BoxShadow(
-                            offset: new Offset(1.0, 1.0),
-                            color: Colors.grey,
-                            blurRadius: 5.0),
-                        new BoxShadow(
-                            offset: new Offset(-1.0, -1.0),
-                            color: Colors.white,
-                            blurRadius: 10.0)
-                      ],
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(60.0)),
+                  decoration: new BoxDecoration(boxShadow: [
+                    new BoxShadow(offset: new Offset(0.0, 0.0), color: Colors.grey),
+                    new BoxShadow(offset: new Offset(1.0, 1.0), color: Colors.grey, blurRadius: 5.0),
+                    new BoxShadow(offset: new Offset(-1.0, -1.0), color: Colors.white, blurRadius: 10.0)
+                  ], color: Colors.white, borderRadius: BorderRadius.circular(60.0)),
                   child: new ShaderMask(
-                      child: new Image(
-                          image: new AssetImage('assets/images/round.png')),
+                      child: new Image(image: new AssetImage('assets/images/round.png')),
                       blendMode: BlendMode.srcATop,
                       shaderCallback: (Rect bounds) {
                         return LinearGradient(
@@ -120,28 +95,21 @@ class _TinderTabState extends State<TinderTab>
                             ],
                             begin: Alignment.topRight,
                             end: Alignment.bottomLeft,
-                            stops: [0.0, 1.0]).createShader(bounds);
+                            stops: [
+                              0.0,
+                              1.0
+                            ]).createShader(bounds);
                       }),
                 ),
                 new Container(
                   padding: EdgeInsets.all(ScreenUtil().setSp(30.0)),
                   height: ScreenUtil().setHeight(110.0),
                   width: ScreenUtil().setHeight(110.0),
-                  decoration: new BoxDecoration(
-                      boxShadow: [
-                        new BoxShadow(
-                            offset: new Offset(0.0, 0.0), color: Colors.grey),
-                        new BoxShadow(
-                            offset: new Offset(1.0, 1.0),
-                            color: Colors.grey,
-                            blurRadius: 5.0),
-                        new BoxShadow(
-                            offset: new Offset(-1.0, -1.0),
-                            color: Colors.white,
-                            blurRadius: 10.0)
-                      ],
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(60.0)),
+                  decoration: new BoxDecoration(boxShadow: [
+                    new BoxShadow(offset: new Offset(0.0, 0.0), color: Colors.grey),
+                    new BoxShadow(offset: new Offset(1.0, 1.0), color: Colors.grey, blurRadius: 5.0),
+                    new BoxShadow(offset: new Offset(-1.0, -1.0), color: Colors.white, blurRadius: 10.0)
+                  ], color: Colors.white, borderRadius: BorderRadius.circular(60.0)),
                   child: new ShaderMask(
                       child: new Image(
                         image: AssetImage('assets/images/closeRounded.png'),
@@ -155,27 +123,20 @@ class _TinderTabState extends State<TinderTab>
                             ],
                             begin: Alignment.topRight,
                             end: Alignment.bottomLeft,
-                            stops: [0.0, 1.0]).createShader(bounds);
+                            stops: [
+                              0.0,
+                              1.0
+                            ]).createShader(bounds);
                       }),
                 ),
                 new Container(
                   height: ScreenUtil().setHeight(80.0),
                   width: ScreenUtil().setHeight(80.0),
-                  decoration: new BoxDecoration(
-                      boxShadow: [
-                        new BoxShadow(
-                            offset: new Offset(0.0, 0.0), color: Colors.grey),
-                        new BoxShadow(
-                            offset: new Offset(1.0, 1.0),
-                            color: Colors.grey,
-                            blurRadius: 5.0),
-                        new BoxShadow(
-                            offset: new Offset(-1.0, -1.0),
-                            color: Colors.white,
-                            blurRadius: 10.0)
-                      ],
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(60.0)),
+                  decoration: new BoxDecoration(boxShadow: [
+                    new BoxShadow(offset: new Offset(0.0, 0.0), color: Colors.grey),
+                    new BoxShadow(offset: new Offset(1.0, 1.0), color: Colors.grey, blurRadius: 5.0),
+                    new BoxShadow(offset: new Offset(-1.0, -1.0), color: Colors.white, blurRadius: 10.0)
+                  ], color: Colors.white, borderRadius: BorderRadius.circular(60.0)),
                   child: new ShaderMask(
                       child: new Icon(
                         Icons.star,
@@ -190,28 +151,21 @@ class _TinderTabState extends State<TinderTab>
                             ],
                             begin: Alignment.topRight,
                             end: Alignment.bottomLeft,
-                            stops: [0.0, 1.0]).createShader(bounds);
+                            stops: [
+                              0.0,
+                              1.0
+                            ]).createShader(bounds);
                       }),
                 ),
                 new Container(
                   padding: EdgeInsets.all(ScreenUtil().setSp(30.0)),
                   height: ScreenUtil().setHeight(110.0),
                   width: ScreenUtil().setHeight(110.0),
-                  decoration: new BoxDecoration(
-                      boxShadow: [
-                        new BoxShadow(
-                            offset: new Offset(0.0, 0.0), color: Colors.grey),
-                        new BoxShadow(
-                            offset: new Offset(1.0, 1.0),
-                            color: Colors.grey,
-                            blurRadius: 5.0),
-                        new BoxShadow(
-                            offset: new Offset(-1.0, -1.0),
-                            color: Colors.white,
-                            blurRadius: 10.0)
-                      ],
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(60.0)),
+                  decoration: new BoxDecoration(boxShadow: [
+                    new BoxShadow(offset: new Offset(0.0, 0.0), color: Colors.grey),
+                    new BoxShadow(offset: new Offset(1.0, 1.0), color: Colors.grey, blurRadius: 5.0),
+                    new BoxShadow(offset: new Offset(-1.0, -1.0), color: Colors.white, blurRadius: 10.0)
+                  ], color: Colors.white, borderRadius: BorderRadius.circular(60.0)),
                   child: new ShaderMask(
                       child: new Icon(
                         Icons.favorite,
@@ -226,31 +180,23 @@ class _TinderTabState extends State<TinderTab>
                             ],
                             begin: Alignment.topRight,
                             end: Alignment.bottomLeft,
-                            stops: [0.0, 1.0]).createShader(bounds);
+                            stops: [
+                              0.0,
+                              1.0
+                            ]).createShader(bounds);
                       }),
                 ),
                 new Container(
                   padding: EdgeInsets.all(ScreenUtil().setWidth(15.0)),
                   height: ScreenUtil().setHeight(80.0),
                   width: ScreenUtil().setHeight(80.0),
-                  decoration: new BoxDecoration(
-                      boxShadow: [
-                        new BoxShadow(
-                            offset: new Offset(0.0, 0.0), color: Colors.grey),
-                        new BoxShadow(
-                            offset: new Offset(1.0, 1.0),
-                            color: Colors.grey,
-                            blurRadius: 5.0),
-                        new BoxShadow(
-                            offset: new Offset(-1.0, -1.0),
-                            color: Colors.white,
-                            blurRadius: 10.0)
-                      ],
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(60.0)),
+                  decoration: new BoxDecoration(boxShadow: [
+                    new BoxShadow(offset: new Offset(0.0, 0.0), color: Colors.grey),
+                    new BoxShadow(offset: new Offset(1.0, 1.0), color: Colors.grey, blurRadius: 5.0),
+                    new BoxShadow(offset: new Offset(-1.0, -1.0), color: Colors.white, blurRadius: 10.0)
+                  ], color: Colors.white, borderRadius: BorderRadius.circular(60.0)),
                   child: new ShaderMask(
-                      child: new Image(
-                          image: new AssetImage('assets/images/lighting.png')),
+                      child: new Image(image: new AssetImage('assets/images/lighting.png')),
                       blendMode: BlendMode.srcATop,
                       shaderCallback: (Rect bounds) {
                         return LinearGradient(
@@ -260,7 +206,10 @@ class _TinderTabState extends State<TinderTab>
                             ],
                             begin: Alignment.topRight,
                             end: Alignment.bottomLeft,
-                            stops: [0.0, 1.0]).createShader(bounds);
+                            stops: [
+                              0.0,
+                              1.0
+                            ]).createShader(bounds);
                       }),
                 )
               ],
@@ -283,8 +232,7 @@ class _TinderTabState extends State<TinderTab>
                 return peoples[index];
               },
               cardController: _cardController,
-              swipeUpdateCallback:
-                  (DragUpdateDetails details, Alignment align) {
+              swipeUpdateCallback: (DragUpdateDetails details, Alignment align) {
                 /// Get swiping card's alignment
                 if (align.x < 0) {
                   //Card is LEFT swiping
@@ -302,8 +250,7 @@ class _TinderTabState extends State<TinderTab>
                   });
                 }
               },
-              swipeCompleteCallback:
-                  (CardSwipeOrientation orientation, int index) {
+              swipeCompleteCallback: (CardSwipeOrientation orientation, int index) {
                 /// Get orientation & index of swiped card!
                 setState(() {
                   atCenter = true;
