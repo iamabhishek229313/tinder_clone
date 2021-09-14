@@ -11,8 +11,7 @@ class HomePage extends StatefulWidget {
   _HomePageState createState() => _HomePageState();
 }
 
-class _HomePageState extends State<HomePage>
-    with SingleTickerProviderStateMixin {
+class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin {
   TabController _tabcontroller;
   @override
   void initState() {
@@ -30,53 +29,44 @@ class _HomePageState extends State<HomePage>
           backgroundColor: Colors.white,
           automaticallyImplyLeading: false,
           elevation: 1,
-          title: new TabBar(
-              indicatorColor: Colors.transparent,
-              controller: _tabcontroller,
-              tabs: [
-                new SafeArea(
-                  child: new Container(
-                    padding: EdgeInsets.all(ScreenUtil().setWidth(20.0)),
-                    child: Center(
-                      child: new Icon(
-                        Tinder_clone.iconfinder_icons_user2_1564535,
-                        color: _tabcontroller.index == 0
-                            ? Theme.of(context).primaryColor
-                            : Colors.grey,
-                        size: ScreenUtil().setSp(80.0),
-                      ),
-                    ),
+          title: new TabBar(indicatorColor: Colors.transparent, controller: _tabcontroller, tabs: [
+            new SafeArea(
+              child: new Container(
+                padding: EdgeInsets.all(ScreenUtil().setWidth(20.0)),
+                child: Center(
+                  child: new Icon(
+                    Tinder_clone.iconfinder_icons_user2_1564535,
+                    color: _tabcontroller.index == 0 ? Theme.of(context).primaryColor : Colors.grey,
+                    size: ScreenUtil().setSp(80.0),
                   ),
                 ),
-                new SafeArea(
-                  child: new Container(
-                    padding: EdgeInsets.all(ScreenUtil().setWidth(20.0)),
-                    child: Center(
-                      child: new Icon(
-                        Tinder_clone.iconfinder_338_tinder_logo_4375488__1_,
-                        color: _tabcontroller.index == 1
-                            ? Theme.of(context).primaryColor
-                            : Colors.grey,
-                        size: ScreenUtil().setSp(80.0),
-                      ),
-                    ),
+              ),
+            ),
+            new SafeArea(
+              child: new Container(
+                padding: EdgeInsets.all(ScreenUtil().setWidth(20.0)),
+                child: Center(
+                  child: new Icon(
+                    Tinder_clone.iconfinder_338_tinder_logo_4375488__1_,
+                    color: _tabcontroller.index == 1 ? Theme.of(context).primaryColor : Colors.grey,
+                    size: ScreenUtil().setSp(80.0),
                   ),
                 ),
-                new SafeArea(
-                  child: new Container(
-                    padding: EdgeInsets.all(ScreenUtil().setWidth(20.0)),
-                    child: Center(
-                      child: new Icon(
-                        Tinder_clone.iconfinder_message_01_186393,
-                        color: _tabcontroller.index == 2
-                            ? Theme.of(context).primaryColor
-                            : Colors.grey,
-                        size: ScreenUtil().setSp(80.0),
-                      ),
-                    ),
+              ),
+            ),
+            new SafeArea(
+              child: new Container(
+                padding: EdgeInsets.all(ScreenUtil().setWidth(20.0)),
+                child: Center(
+                  child: new Icon(
+                    Tinder_clone.iconfinder_message_01_186393,
+                    color: _tabcontroller.index == 2 ? Theme.of(context).primaryColor : Colors.grey,
+                    size: ScreenUtil().setSp(80.0),
                   ),
                 ),
-              ]),
+              ),
+            ),
+          ]),
         ),
         body: new TabBarView(
           physics: NeverScrollableScrollPhysics(),

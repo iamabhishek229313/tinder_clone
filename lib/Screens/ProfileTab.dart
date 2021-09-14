@@ -35,7 +35,7 @@ class _ProfileTabState extends State<ProfileTab> {
                         new SizedBox(height: ScreenUtil().setHeight(50.0)),
                         new ClipRRect(
                           borderRadius: BorderRadius.circular(500.0),
-                          child: new Image(fit: BoxFit.cover, height: ScreenUtil().setHeight(350.0), width: ScreenUtil().setWidth(430.0), image: new AssetImage('assets/images/abhishekProfile.JPG')),
+                          child: new Image(fit: BoxFit.cover, height: ScreenUtil().setHeight(350.0), width: ScreenUtil().setWidth(430.0), image: new AssetImage('assets/images/profile_img.jpg')),
                         ),
                         new SizedBox(height: ScreenUtil().setHeight(10.0)),
                         new Text(
