@@ -9,8 +9,7 @@ class MatchCard extends StatefulWidget {
   final int age;
   final String bio;
 
-  MatchCard(@required this.name, @required this.imageURL, @required this.age,
-      @required this.bio);
+  MatchCard(@required this.name, @required this.imageURL, @required this.age, @required this.bio);
 
   @override
   _MatchCardState createState() => _MatchCardState();
@@ -22,10 +21,7 @@ class _MatchCardState extends State<MatchCard> {
     return Container(
       decoration: new BoxDecoration(
         boxShadow: [
-          new BoxShadow(
-              color: Colors.grey.shade700,
-              offset: new Offset(0.0, 5.0),
-              blurRadius: 20.0)
+          new BoxShadow(color: Colors.grey.shade700, offset: new Offset(0.0, 5.0), blurRadius: 20.0)
         ],
         borderRadius: new BorderRadius.circular(100.0),
       ),
@@ -34,10 +30,7 @@ class _MatchCardState extends State<MatchCard> {
           new Container(
             decoration: new BoxDecoration(
               boxShadow: [
-                new BoxShadow(
-                    color: Colors.grey.shade700,
-                    offset: new Offset(0.0, 5.0),
-                    blurRadius: 15.0)
+                new BoxShadow(color: Colors.grey.shade700, offset: new Offset(0.0, 5.0), blurRadius: 15.0)
               ],
               borderRadius: new BorderRadius.circular(100.0),
             ),
@@ -45,8 +38,7 @@ class _MatchCardState extends State<MatchCard> {
             width: MediaQuery.of(context).size.width - 10.0,
             child: new ClipRRect(
               borderRadius: new BorderRadius.circular(10.0),
-              child: new Image(
-                  fit: BoxFit.cover, image: new AssetImage(widget.imageURL)),
+              child: new Image(fit: BoxFit.cover, image: new AssetImage(widget.imageURL)),
             ),
           ),
           new Positioned(
@@ -62,32 +54,18 @@ class _MatchCardState extends State<MatchCard> {
                   children: <Widget>[
                     new Text(
                       widget.name,
-                      style: new TextStyle(
-                          shadows: [
-                            new Shadow(
-                                color: Colors.black54,
-                                offset: new Offset(1.0, 2.0),
-                                blurRadius: 10.0)
-                          ],
-                          color: Colors.white,
-                          fontSize: ScreenUtil().setSp(95.0),
-                          fontWeight: FontWeight.w800),
+                      style: new TextStyle(shadows: [
+                        new Shadow(color: Colors.black54, offset: new Offset(1.0, 2.0), blurRadius: 10.0)
+                      ], color: Colors.white, fontSize: ScreenUtil().setSp(95.0), fontWeight: FontWeight.w800),
                     ),
                     new SizedBox(
                       width: ScreenUtil().setWidth(40.0),
                     ),
                     new Text(
                       widget.age.toString(),
-                      style: new TextStyle(
-                          shadows: [
-                            new Shadow(
-                                color: Colors.black54,
-                                offset: new Offset(1.0, 2.0),
-                                blurRadius: 10.0)
-                          ],
-                          color: Colors.white,
-                          fontSize: ScreenUtil().setSp(70.0),
-                          fontWeight: FontWeight.w300),
+                      style: new TextStyle(shadows: [
+                        new Shadow(color: Colors.black54, offset: new Offset(1.0, 2.0), blurRadius: 10.0)
+                      ], color: Colors.white, fontSize: ScreenUtil().setSp(70.0), fontWeight: FontWeight.w300),
                     ),
                   ],
                 ),
@@ -99,10 +77,7 @@ class _MatchCardState extends State<MatchCard> {
                   style: new TextStyle(
                       color: Colors.white,
                       shadows: [
-                        new Shadow(
-                            color: Colors.black54,
-                            offset: new Offset(1.0, 2.0),
-                            blurRadius: 10.0)
+                        new Shadow(color: Colors.black54, offset: new Offset(1.0, 2.0), blurRadius: 10.0)
                       ],
                       fontSize: ScreenUtil().setSp(55.0),
                       fontWeight: FontWeight.w400),
@@ -119,10 +94,16 @@ class _MatchCardState extends State<MatchCard> {
               decoration: new BoxDecoration(
                   borderRadius: new BorderRadius.circular(10.0),
                   gradient: new LinearGradient(
-                      colors: [Colors.transparent, Colors.black26],
+                      colors: [
+                        Colors.transparent,
+                        Colors.black26
+                      ],
                       begin: Alignment.topCenter,
                       end: Alignment.bottomCenter,
-                      stops: [0.0, 1.0])),
+                      stops: [
+                        0.0,
+                        1.0
+                      ])),
             ),
           )
         ],
